@@ -1,11 +1,18 @@
-import java.util.EmptyStackException;
-import java.util.Scanner;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 
 public class CommandInterface {
-    public void run() {
-        System.out.println("Welcome to Reverse Polish Notation calculator Please input a valid expression or type e to exit");
+    private static final DecimalFormat df10 = new DecimalFormat("#.##########");
+    public void run(InputStream in, PrintStream out) {
+        out.println("Welcome to Reverse Polish Notation calculator Please input a valid expression or type e to exit");
         String input;
-        Scanner myScanner = new Scanner(System.in);
+        Scanner myScanner = new Scanner(in);
         Calculator calc = new Calculator();
         while (true) {
             input = myScanner.nextLine();
@@ -13,13 +20,24 @@ public class CommandInterface {
                 System.exit(1);
                 break;
             } else try {
-                System.out.println(calc.calculate(input).toString());
+                printStack(out,calc.calculate(input));
             } catch (IllegalArgumentException e) {
-                System.out.println("Invalid notation calculator has been cleared, please try again or enter e to exit");
+                out.println("Invalid notation, please try again or enter e to exit");
+                printStack(out,calc.stack);
             } catch (emptyStackException e) {
-                System.out.println("Operator "  + e.getOperator() + " : insufficient parameters");
+                out.println("Operator "  + e.getOperator() + " (position " + e.getPosition() +  " ): insufficient parameters");
+                printStack(out, calc.stack);
             }
         }
     }
+    private void printStack(PrintStream out, Stack<Double> stack){
+        out.print("stack: ");
+        out.println(
+                StreamSupport.stream(Spliterators.spliteratorUnknownSize(stack.iterator(), Spliterator.ORDERED), false)
+                        .map(df10::format)
+                        .collect(Collectors.joining(" ")));
+    }
+
+
 }
 
