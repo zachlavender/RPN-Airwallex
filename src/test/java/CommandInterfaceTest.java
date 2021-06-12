@@ -20,6 +20,7 @@ public class CommandInterfaceTest {
         assertEquals(a, ("Welcome to Reverse Polish Notation calculator Please input a valid expression or type e to exit\r\n" +
                 "stack: 1 2 7\r\nstack: 1 2 7 1 2 3 3\r\n"));
     }
+
     @Test
     public void errorPrintTest() {
         CommandInterface clc = new CommandInterface();
@@ -32,6 +33,4 @@ public class CommandInterfaceTest {
                 "Operator / (position 9 ): insufficient parameters\r\n" +
                 "stack: \r\n"));
     }
-
-
 }

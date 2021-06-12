@@ -5,8 +5,6 @@ class Calculator {
     Stack<Stack<Double>> stacks = new Stack<>();
     Stack<Double> stack = new Stack<>();
     Operators operators = new Operators();
-    Calculator() {
-    }
 
     public Stack<Double> calculate(String in) throws emptyStackException{
         String[] elements = in.split(" ");
@@ -25,7 +23,6 @@ class Calculator {
             position = position + element.length();
             position = position + 1;
         }
-
         return stack;
     }
 }

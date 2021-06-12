@@ -27,14 +27,11 @@ public class Operators {
                 break;
             default:
                 if (Doubles.tryParse(element) == null) {
-
                     throw new IllegalArgumentException();
                 }
                 stack.push(Double.parseDouble(element));
-
                 break;
         }
-
         return stack;
     }
 }

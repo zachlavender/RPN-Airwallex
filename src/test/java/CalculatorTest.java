@@ -19,6 +19,7 @@ public class CalculatorTest {
     public void init() {
         calc = new Calculator();
     }
+
     @Test
     public void calculateSingle() throws emptyStackException {
         calc.calculate("3 7 +");
@@ -44,12 +45,10 @@ public class CalculatorTest {
         assert output.equals(calc.stack);
     }
 
-
     @Test (expected = emptyStackException.class)
     public void undoEmpty() throws emptyStackException {
         calc.calculate("undo");
     }
-
 
     @Test
     public void clearUndo() throws emptyStackException {

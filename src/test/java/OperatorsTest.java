@@ -20,7 +20,6 @@ public class OperatorsTest {
         checkStack = new Stack<>();
     }
 
-
     @Test
     public void clear(){
         exampleStack = operators.operate("clear",exampleStack);
@@ -39,6 +38,16 @@ public class OperatorsTest {
         exampleStack = operators.operate("sqrt",exampleStack);
         checkStack.push(18.0);
         checkStack.push(3.0);
+        assert exampleStack.equals(checkStack);
+    }
+
+    @Test
+    public void negativeSqrt(){
+        exampleStack.push(-4.0);
+        exampleStack = operators.operate("sqrt",exampleStack);
+        checkStack.push(18.0);
+        checkStack.push(9.0);
+        checkStack.push(Double.NaN);
         assert exampleStack.equals(checkStack);
     }
 

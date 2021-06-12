@@ -7,7 +7,9 @@ import java.util.stream.StreamSupport;
 
 
 public class CommandInterface {
+
     private static final DecimalFormat df10 = new DecimalFormat("#.##########");
+
     public void run(InputStream in, PrintStream out) {
         out.println("Welcome to Reverse Polish Notation calculator Please input a valid expression or type e to exit");
         String input;
@@ -29,6 +31,7 @@ public class CommandInterface {
             }
         }
     }
+
     private void printStack(PrintStream out, Stack<Double> stack){
         out.print("stack: ");
         out.println(
@@ -36,7 +39,5 @@ public class CommandInterface {
                         .map(df10::format)
                         .collect(Collectors.joining(" ")));
     }
-
-
 }
 
