@@ -76,7 +76,9 @@ public class OperatorsTest {
         exampleStack = operators.operate("/", exampleStack);
     }
 
-    @Test
-    public void operate() {
+    @Test(expected = IllegalArgumentException.class)
+    public void illegalValue() {
+        exampleStack = operators.operate("abc", exampleStack);
     }
+
 }

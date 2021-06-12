@@ -8,7 +8,7 @@ class Calculator {
     Calculator() {
     }
 
-    public Stack calculate(String in) throws emptyStackException{
+    public Stack<Double> calculate(String in) throws emptyStackException{
         String[] elements = in.split(" ");
         int elementNum;
         for (elementNum = 0; elementNum < elements.length; elementNum++) {
@@ -17,7 +17,7 @@ class Calculator {
                 if (element.equals("undo")){
                     stack = stacks.pop();
                 }else{
-                    stacks.push(stack);
+                    stacks.push((Stack<Double>)stack.clone());
                     stack = operators.operate(element,stack);
                 }
 
