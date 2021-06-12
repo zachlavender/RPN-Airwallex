@@ -14,7 +14,7 @@ public class CommandInterface {
         String input;
         Scanner myScanner = new Scanner(in);
         Calculator calc = new Calculator();
-        while (true) {
+        while (myScanner.hasNextLine()) {
             input = myScanner.nextLine();
             if (input.equals("e")) {
                 System.exit(1);

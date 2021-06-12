@@ -1,18 +1,15 @@
 public class emptyStackException extends Exception  {
     private String operator;
     private int position;
-    public emptyStackException(Throwable cause, String op,int elementNum) {
+    public emptyStackException(Throwable cause, String op,int position) {
         super(cause);
         this.operator = op;
-        this.position = generatePosition(elementNum);
+        this.position = position;
     }
     public String getOperator() {
         return this.operator;
     }
     public int getPosition(){
         return this.position;
-    }
-    private int generatePosition(int elementNum){
-        return ((elementNum+1)*2)-1;
     }
 }

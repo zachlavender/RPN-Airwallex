@@ -10,9 +10,8 @@ class Calculator {
 
     public Stack<Double> calculate(String in) throws emptyStackException{
         String[] elements = in.split(" ");
-        int elementNum;
-        for (elementNum = 0; elementNum < elements.length; elementNum++) {
-            String element = elements[elementNum];
+        int position = 1;
+        for (String element : elements){
             try {
                 if (element.equals("undo")){
                     stack = stacks.pop();
@@ -20,12 +19,11 @@ class Calculator {
                     stacks.push((Stack<Double>)stack.clone());
                     stack = operators.operate(element,stack);
                 }
-
-
             }catch (EmptyStackException e) {
-                throw new emptyStackException(e, element, elementNum);
+                throw new emptyStackException(e, element, position);
             }
-
+            position = position + element.length();
+            position = position + 1;
         }
 
         return stack;

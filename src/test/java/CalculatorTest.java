@@ -44,6 +44,7 @@ public class CalculatorTest {
         assert output.equals(calc.stack);
     }
 
+
     @Test (expected = emptyStackException.class)
     public void undoEmpty() throws emptyStackException {
         calc.calculate("undo");
